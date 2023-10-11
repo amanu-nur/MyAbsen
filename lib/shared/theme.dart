@@ -13,9 +13,11 @@ Color kDarkColor = Color(0xff1F1449);
 Color kLightColor = Color(0xffffffff);
 Color kGreyColor = Color(0xffFAFAFA);
 Color kGreysColor = Color(0xff9698A9);
+Color kTransparantColor = Color(0x9698A9);
 
 // Text Style
 TextStyle blackTextStyle = GoogleFonts.poppins(color: kDarkColor);
+TextStyle primaryTextStyle = GoogleFonts.poppins(color: kSecondaryColor);
 TextStyle secondaryTextStyle = GoogleFonts.poppins(color: kGreysColor);
 TextStyle lightTextStyle = GoogleFonts.poppins(color: kLightColor);
 

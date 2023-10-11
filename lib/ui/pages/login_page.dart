@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:myabsen/ui/widgets/custom_button.dart';
+import 'package:myabsen/ui/widgets/custom_textform.dart';
 import '../../shared/theme.dart';
 
 class LoginPage extends StatelessWidget {
@@ -17,77 +19,6 @@ class LoginPage extends StatelessWidget {
     }
 
     Widget sectionInput() {
-      Widget usernameInput() {
-        return Container(
-          margin: EdgeInsets.only(bottom: 20),
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Text(
-              'Username',
-              style: blackTextStyle.copyWith(fontSize: 14, fontWeight: light),
-            ),
-            SizedBox(
-              height: 6,
-            ),
-            TextFormField(
-              cursorColor: kDarkColor,
-              decoration: InputDecoration(
-                  hintText: "Your username",
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(radiusDefault)),
-                  focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(radiusDefault),
-                      borderSide: BorderSide(color: kPrimaryColor))),
-            )
-          ]),
-        );
-      }
-
-      Widget passwordInput() {
-        return Container(
-          margin: EdgeInsets.only(bottom: 30),
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Text(
-              'Password',
-              style: blackTextStyle.copyWith(fontSize: 14, fontWeight: light),
-            ),
-            SizedBox(
-              height: 6,
-            ),
-            TextFormField(
-              cursorColor: kDarkColor,
-              obscureText: true,
-              decoration: InputDecoration(
-                  hintText: "Your password",
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(radiusDefault)),
-                  focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(radiusDefault),
-                      borderSide: BorderSide(color: kPrimaryColor))),
-            )
-          ]),
-        );
-      }
-
-      Widget submitButton() {
-        return Container(
-          width: double.infinity,
-          height: 55,
-          child: TextButton(
-            onPressed: () {},
-            style: TextButton.styleFrom(
-                backgroundColor: kPrimaryColor,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(radiusDefault))),
-            child: Text(
-              'Sign In',
-              style: lightTextStyle.copyWith(fontSize: 18, fontWeight: medium),
-            ),
-          ),
-        );
-      }
-
       return Container(
         margin: EdgeInsets.only(top: 30),
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
@@ -95,7 +26,23 @@ class LoginPage extends StatelessWidget {
             color: kLightColor,
             borderRadius: BorderRadius.circular(radiusDefault)),
         child: Column(
-          children: [usernameInput(), passwordInput(), submitButton()],
+          children: [
+            customTextForm(
+              titleForm: 'Username',
+              placeholder: 'Your username',
+              marginBottom: 30,
+            ),
+            customTextForm(
+              titleForm: 'Password',
+              placeholder: 'Your password',
+              isSecure: true,
+              marginBottom: 120,
+            ),
+            customButton(
+              titleButton: 'Sign In',
+              funcButton: '/main-app',
+            )
+          ],
         ),
       );
     }
@@ -103,7 +50,7 @@ class LoginPage extends StatelessWidget {
     Widget tacBottom() {
       return Container(
         margin: EdgeInsets.only(
-          top: 240,
+          top: 140,
         ),
         child: TextButton(
           onPressed: () {},
