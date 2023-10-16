@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:myabsen/shared/theme.dart';
+import 'package:myabsen/ui/pages/detail_absen.dart';
+import 'package:myabsen/ui/pages/detail_semester.dart';
 import 'package:myabsen/ui/widgets/custom_button.dart';
 import 'package:myabsen/ui/widgets/custom_menu_items.dart';
 
 class homePage extends StatelessWidget {
   const homePage({super.key});
 
-  Widget MenuList() {
+  Widget MenuList(context) {
     return Container(
       margin:
           EdgeInsets.only(left: marginDefault, right: marginDefault, top: 30),
@@ -25,33 +27,29 @@ class homePage extends StatelessWidget {
                   title: 'Shift',
                   icon: 'assets/ic_shif.png',
                 ),
-                MenuItem(
-                  title: 'Scholarship',
-                  icon: 'assets/ic_beasiswa.png',
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => AbsenDetail()),
+                    );
+                  },
+                  child: MenuItem(
+                    title: 'Absence Recap',
+                    icon: 'assets/ic_list.png',
+                  ),
                 ),
-                MenuItem(
-                  title: 'Training',
-                  icon: 'assets/ic_training.png',
-                )
-              ],
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(top: 10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                MenuItem(
-                  title: 'Absence Recap',
-                  icon: 'assets/ic_list.png',
-                ),
-                MenuItem(
-                  title: 'Schedule',
-                  icon: 'assets/ic_jadwal.png',
-                ),
-                MenuItem(
-                  title: 'Semester Leave',
-                  icon: 'assets/ic_cuti.png',
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => DetailSemester()),
+                    );
+                  },
+                  child: MenuItem(
+                    title: 'Permission',
+                    icon: 'assets/ic_cuti.png',
+                  ),
                 )
               ],
             ),
@@ -189,7 +187,7 @@ class homePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      children: [header(), CheckMenu(), MenuList()],
+      children: [header(), CheckMenu(), MenuList(context)],
     );
   }
 }

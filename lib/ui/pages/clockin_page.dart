@@ -1,31 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:myabsen/shared/theme.dart';
+import 'package:myabsen/ui/pages/main_app.dart';
 import 'package:myabsen/ui/widgets/custom_button.dart';
 
 class ClockIn extends StatelessWidget {
   const ClockIn({super.key});
 
-  Widget header() {
+  Widget header(context) {
     return Container(
       padding: EdgeInsets.only(
           left: marginDefault, right: marginDefault, top: 50, bottom: 30),
       child: Row(
         children: [
-          Container(
-            height: 45,
-            width: 45,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: kSecondaryColor,
-            ),
-            child: Center(
-              child: Container(
-                height: 24,
-                width: 24,
-                decoration: BoxDecoration(
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => MainApp()),
+              );
+            },
+            child: Container(
+              height: 45,
+              width: 45,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: kSecondaryColor,
+              ),
+              child: Center(
+                child: Container(
+                  height: 24,
+                  width: 24,
+                  decoration: BoxDecoration(
                     image: DecorationImage(
-                  image: AssetImage('assets/ic_back.png'),
-                )),
+                      image: AssetImage('assets/ic_back.png'),
+                    ),
+                  ),
+                ),
               ),
             ),
           ),
@@ -110,7 +120,7 @@ class ClockIn extends StatelessWidget {
               customRadius: true,
               radius: 5,
               colorSecondary: true,
-              funcButton: '/main-app',
+              funcButton: '/clock-camera',
             )
           ],
         ),
@@ -129,7 +139,7 @@ class ClockIn extends StatelessWidget {
             image: AssetImage('assets/dumy_maps.png'), fit: BoxFit.fill),
       ),
       child: Column(
-        children: [header(), locationTag()],
+        children: [header(context), locationTag()],
       ),
     );
   }
